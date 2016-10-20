@@ -1,41 +1,16 @@
 $(document).ready(function() {
 
-    var content = $('section.content');
+    var navLink = $('body > main > nav > ul > li > a'),
+        navTile = $('body > main > section.content > section.tile');
 
-    content.click(function() {
-        content.this.toggleClass('clicked');
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // scroll menu fixed
-    $(window).scroll(function() {
-        var scroll = $(window).scrollTop();
-        if (scroll >= 1) {
-            $(".header-fixed").addClass("scrolling");
-            $(".paging.content").addClass("scrolling");
-        }
-        if (scroll == 0) {
-            $(".header-fixed").removeClass("scrolling");
-            $(".paging.content").removeClass("scrolling");
-        }
-    });
-
-    // send report
-
-    $( ".sendreport" ).click(function() {
-        $( ".sendbox" ).slideToggle( 200 );
+    navLink.on( "click", function() {
+        navTile.fadeOut(300);
+        navTile.removeClass('tileOpen');
+        navLink.removeClass('active');
+        $(this).addClass('active');
+        $(this.hash).toggleClass('tileOpen');
+        $(this.hash).delay(150).fadeIn(300);
+        $('body').addClass('tileOpen');
     });
 
 });

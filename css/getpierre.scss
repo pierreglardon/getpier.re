@@ -1,37 +1,170 @@
 body {
-    background:#121212;
+    background:#19303b;
     color:#fafafa;
-    font-size:12px;
-    font-family: 'Roboto', sans-serif;
+    font-size:14px;
+    font-family: 'Open Sans', sans-serif;
     > main {
-        font-size:0;
-        overflow:hidden;
-        height:100vh;
-        > section {
-            font-size:1rem;
-            display:inline-block;
-            width:calc(100%/3);
-            vertical-align: top;
+    width:80%;
+    margin:auto;
+        > header {
+            padding-top:12rem;
+            padding-bottom:6rem;
+            transition: padding ease 1s;
+            h1 {
+                font-size:4rem;
+                text-transform: uppercase;
+                font-weight:bold;
+                letter-spacing:2px;
+                @media screen and (max-width: 1024px) {
+                    font-size:5rem;
+                }
+                a {
+                    color:#ffffff;
+                    text-decoration: none;
+                }
+            }
+            h2 {
+                font-size:3rem;
+                text-transform: uppercase;
+                letter-spacing:2px;
+                @media screen and (max-width: 1024px) {
+                    font-size:4rem;
+                }
+            }
+        }
+        > nav {
+            padding-bottom:6rem;
+            ul {
+                li {
+                    display:inline-block;
+                    margin-right:6rem;
+                    @media screen and (max-width: 1024px) {
+                      display:block;
+                      margin-bottom:2rem;
+                      margin-right:0;
+                    }
+                    &:last-of-type {
+                        margin:0;
+                    }
+                    a {
+                        color:#fafafa;
+                        font-size:1.2rem;
+                        text-transform: uppercase;
+                        text-decoration:none;
+                        font-weight:bold;
+                        @media screen and (max-width: 1024px) {
+                             font-size:3rem;
+                        }
+                    }
+                }
+            }
+        }
+        > section.content {
             position:relative;
-            height:100%;
-            box-shadow: 0 0 150px 40px #121212 inset;
-            background:darkred;
-            > header {
-                text-align:center;
-                position:relative;
-                top:50%;
-                transform:translateY(-50%);
-                font-size:1.5rem;
-                text-transform:uppercase;
-                letter-spacing:1px;
-                opacity:0.2;
-                transition:all ease 0.5s;
+            > section {
+                position:absolute;
+                top:0;
+                &.tile {
+                    display:none;
+                    line-height:1.5rem;
+                    font-size:1rem;
+                    text-transform: uppercase;
+                    letter-spacing:1px;
+                    @media screen and (max-width: 1024px) {
+                        font-size:2rem;
+                        line-height:3rem;
+                    }
+                    > header {
+                        margin-bottom:2rem;
+                        @media screen and (max-width: 1024px) {
+                            margin-bottom:1rem;
+                        }
+                    }
+                    > footer {
+                        margin-top: 2rem;
+                        @media screen and (max-width: 1024px) {
+                            margin-top:1rem;
+                        }
+                    }
+                }
             }
         }
-        > section:hover {
+    }
+    &.tileOpen {
+        > main {
             > header {
-                opacity:1;
+                padding-top:3rem;
+                padding-bottom:3rem;
+                @media screen and (max-width: 1024px) {
+                    padding-top:12rem;
+                    padding-bottom:6rem;
+                }
             }
         }
+    }
+    .glitchSmall {
+        display:inline-block;
+        font-weight:700;
+        color:#ffffff;
+        text-decoration:none;
+        &:hover, &.active {
+            position:relative;
+            &:before, &:after {
+                content:attr(data-glitch);
+                position:absolute;
+                display:block;
+                width:100%;
+                top:0;
+                z-index: -1;
+            }
+            &:before {
+                color:#8ee1ed;
+                animation: glitchShadowSmall 0.5s infinite;
+                animation-delay: 0.1s;
+            }
+            &:after {
+                color:#f22727;
+                animation: glitchShadowSmall 0.5s infinite;
+            }
+        }
+    }
+    @keyframes glitchShadowSmall {
+        0% { top: 0; left: 0; }
+        20% { top: -0.05em; left: 0.1em; }
+        40% { top: 0.05em; left: -0.05em; }
+        60% { top: -0.1em; left: -0.1em; }
+        80% { top: 0.1em; left: 0.05em; }
+        100% { top: 0; left: 0; }
+    }
+    .glitchBig {
+        display:block;
+        &:hover, &.active {
+            position:relative;
+            &:before, &:after {
+                content:attr(data-glitch);
+                position:absolute;
+                display:block;
+                width:100%;
+                top:0;
+                z-index: -1;
+            }
+            &:before {
+                color:#8ee1ed;
+                animation: glitchShadowBig 0.5s infinite;
+                animation-delay: 0.1s;
+            }
+            &:after {
+                color:#f22727;
+                animation: glitchShadowBig 0.5s infinite;
+            }
+        }
+    }
+    @keyframes glitchShadowBig {
+        0% { top: 0; left: 0; }
+        20% { top: -0.025em; left: 0.05em; }
+        40% { top: 0.025em; left: -0.025em; }
+        60% { top: -0.05em; left: -0.05em; }
+        80% { top: 0.05em; left: 0.025em; }
+        100% { top: 0; left: 0; }
     }
 }
